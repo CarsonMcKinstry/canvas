@@ -18,25 +18,29 @@ class Ball {
     this.vy = vy;
     this.mass = mass;
     this.r = r;
-    this.color = r;
+    this.color = color;
   }
 
-  init(canvas) {
+  init = (canvas) => {
     this.canvas = document.getElementById(canvas);
     this.ctx = this.canvas.getContext('2d');
+
+    this.draw();
   }
 
-  draw() {
+  draw = () => {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fillStyle = this.color;
-    ctx.fill();
+    this.ctx.beginPath();
+    this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+    this.ctx.closePath();
+    this.ctx.fillStyle = this.color;
+    this.ctx.fill();
   }
 }
 
-const ball = new Ball(radius, height - radius, 0, 0, 0, radius, 'blue');
+const ball = new Ball(100, 100, 0, 0, 0, radius, 'blue');
 
-ball.draw();
+ball.init(canvasId);
+
+console.log(ball);
